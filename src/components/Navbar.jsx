@@ -90,10 +90,10 @@ const Navbar = ({ menuIdx }) => {
             className="flex justify-center items-center gap-2 bg-gray-300 text-gray-900 py-3 px-4 rounded-md lg:w-full w-fit"
             onClick={handleLogoutClick}
           >
-            {/*<FcGoogle className="w-5 h-5 hidden lg:inline" /> */}
-            <RiLogoutBoxFill className="w-6 h-6 " />
+            {/* <FcGoogle className="w-5 h-5 hidden lg:inline" /> */}
+            <RiLogoutBoxFill className="w-6 h-6" />
             <span className="text-[10px] hidden lg:inline">
-              <span className="hidden lg:inline">{given_name}님 </span>Logout
+              <span className="">{given_name}님 </span>Logout
             </span>
           </button>
         </div>
@@ -104,9 +104,9 @@ const Navbar = ({ menuIdx }) => {
               onSuccess={handleLoginSucess}
               onError={handleLoginError}
             />
-            <button className="flex justify-center items-center gap-2 bg-gray-300 text-gray-900 py-3 px-4 rounded-md lg:w-full w-fit relative lg:absolute ">
+            <button className="flex justify-center items-center gap-2 bg-gray-300 text-gray-900 py-3 px-4 rounded-md lg:w-full w-fit">
               {/* <FcGoogle className="w-5 h-5" /> */}
-              <RiLoginBoxFill className="w-6 h-6 " />
+              <RiLoginBoxFill className="w-6 h-6" />
               <span className="text-[10px] hidden lg:inline">Google Login</span>
             </button>
           </GoogleOAuthProvider>

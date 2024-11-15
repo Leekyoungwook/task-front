@@ -135,7 +135,7 @@ const Item = ({ task }) => {
               자세히
             </span>
           </h2>
-          <p className="text-sm 1g:text-[1rem]">
+          <p className="text-sm lg:text-[1rem]">
             {textLengthOverCut(description, 60, "...")}
           </p>
         </div>

@@ -155,8 +155,7 @@ const Modal = () => {
               placeholder="제목을 입력해 주세요..."
               onChange={handleChange}
               {...(modalType === "details" && { disabled: true })}
-              className="sm:placeholder:text-[1rem] placeholder:text-[0.75rem]
-              sm:text-[1rem] text-[0.75rem]"
+              className="sm:placeholder:text-[1rem] placeholder:text-[0.75rem] sm:text-[1rem] text-[0.75rem]"
             />
           </div>
           <div className="input-control">
@@ -169,8 +168,7 @@ const Modal = () => {
               placeholder="내용을 입력해 주세요..."
               onChange={handleChange}
               {...(modalType === "details" && { disabled: true })}
-              className="sm:placeholder:text-[1rem] placeholder:text-[0.75rem]
-              sm:text-[1rem] text-[0.75rem]"
+              className="sm:placeholder:text-[1rem] placeholder:text-[0.75rem] sm:text-[1rem] text-[0.75rem]"
             ></textarea>
           </div>
           <div className="input-control">
@@ -182,8 +180,7 @@ const Modal = () => {
               value={formData.date}
               onChange={handleChange}
               {...(modalType === "details" && { disabled: true })}
-              className="sm:placeholder:text-[1rem] placeholder:text-[0.75rem]
-              sm:text-[1rem] text-[0.75rem]"
+              className="sm:placeholder:text-[1rem] placeholder:text-[0.75rem] sm:text-[1rem] text-[0.75rem]"
             />
           </div>
           <div className="input-control toggler">

@@ -72,16 +72,14 @@ const Itempanel = ({ pageTitle, filterCompleted, filterImportant }) => {
   };
 
   return (
-    <div className="panel bg-[#212121] lg:w-4/5 w-[calc(100%-80px)]  rounded-md border border-gray-500 py-5 px-4 overflow-y-auto">
+    <div className="panel bg-[#212121] lg:w-4/5 h-full w-[calc(100%-80px)] rounded-md border border-gray-500 py-5 px-4 overflow-y-auto">
       {userKey ? (
         <div className="panel-wraper w-full h-full">
           {isOpen && <Modal />}
           <div className="flex justify-between items-center">
             <PageTitle title={pageTitle} />
-
             <button
-              className="lg:text-sm text-[0.75rem] py-1 px-3 border border-gray-500 rounded-md hover:bg-gray-700 cursor-pointer
-            "
+              className="lg:text-sm text-[0.75rem] py-1 px-3 border border-gray-500 rounded-md hover:bg-gray-700 cursor-pointer"
               onClick={handleOpenModal}
             >
               할일 추가
