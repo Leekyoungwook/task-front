@@ -32,4 +32,4 @@ jobs:
       - name: Delete existing container
         run: docker rm -f reactContainer
       - name: Run container
-        run: docker run -d -p 80:80 --name reactContainer lkw001110/tasks_front:latest
+        run: docker run -d -p 80:80 --name reactContainer lkw001110/tasks_front
