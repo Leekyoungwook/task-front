@@ -6,7 +6,6 @@ import {
   UPDATE_TASK_API_URL,
   UPDATE_COMPLETED_TASK_API_URL,
 } from "../../utils/apiUrl";
-
 import {
   deleteRequest,
   getRequest,
@@ -143,7 +142,6 @@ const apiSlice = createSlice({
       )
       .addCase(fetchUpdateCompletedData.rejected, handleRejected);
   },
-});
-// slice 객체 저장
+}); // slice 객체 저장
 
 export default apiSlice.reducer;

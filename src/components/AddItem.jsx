@@ -10,7 +10,7 @@ const AddItem = () => {
     dispatch(openModal({ modalType: "create", task: null }));
   };
   return (
-    <div className="add-card w-1/3 h-[25vh] p-[0.25rem]">
+    <div className="add-card lg:w-1/3 sm:w-1/2 w-full h-[25vh] p-[0.25rem]">
       <div className="w-full h-full border border-gray-500 rounded-md bg-gray-900 py-3 px-4 flex items-center justify-center">
         <button
           className="flex items-center gap-2  group"

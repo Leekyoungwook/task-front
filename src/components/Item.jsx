@@ -4,10 +4,11 @@ import { useDispatch } from "react-redux";
 import {
   fetchDeleteItemData,
   fetchGetItemsData,
-  fetchUpdateCompletedData, // import 문을 상단으로 이동
+  fetchUpdateCompletedData,
 } from "../redux/slices/apiSlice";
 
 import { toast } from "react-toastify";
+
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { openModal } from "../redux/slices/modalSlice";
@@ -16,8 +17,10 @@ const Item = ({ task }) => {
   const [confirm, setConfirm] = useState(false);
   const { _id, title, description, date, iscompleted, isimportant, userid } =
     task;
+  // console.log(_id, title, description, date, iscompleted, isimportant, userid);
 
   const [isCompleted, setIsCompleted] = useState(iscompleted);
+
   const dispatch = useDispatch();
 
   const textLengthOverCut = (text, length, lastText) => {
@@ -74,6 +77,7 @@ const Item = ({ task }) => {
     }
 
     try {
+      // unwrap() : 비동기 함수의 await 값이 인식 안될 때 사용(ex: dispatch)
       await dispatch(fetchDeleteItemData(_id)).unwrap();
       toast.success("아이템이 삭제되었습니다.");
       await dispatch(fetchGetItemsData(userid)).unwrap();
@@ -92,9 +96,13 @@ const Item = ({ task }) => {
   };
 
   const changeCompleted = async () => {
-    // async 키워드 추가
-    const newIsCompleted = !isCompleted; // 데이터 베이스에 있는 iscompleted의 반대값 저장
+    // setIsCompleted(!isCompleted)을 호출하면 상태 업데이트가 비동기적으로 이루어지기 때문에, isCompleted의 값이 즉시 변경되지 않는다.
+    // 따라서 updateCompletedData 객체를 생성할 때 isCompleted의 이전 값이 사용된다. 이로 인해 true/false가 한 단계씩 밀리게 된다.
+
+    const newIsCompleted = !isCompleted; // 데이터베이스에 있는 iscompleted의 반대값 저장
     setIsCompleted(newIsCompleted);
+
+    // console.log(newIsCompleted);
 
     const updateCompletedData = {
       id: _id,
@@ -105,35 +113,37 @@ const Item = ({ task }) => {
       await dispatch(fetchUpdateCompletedData(updateCompletedData)).unwrap();
       newIsCompleted
         ? toast.success("완료 처리 되었습니다.")
-        : toast.success("미완료 처리되었습니다");
+        : toast.success("미완료 처리 되었습니다.");
       await dispatch(fetchGetItemsData(userid)).unwrap();
     } catch (error) {
-      toast.error("완료 처리에 실패했습니다");
-      console.error("Update Completed Error" + error);
+      toast.error("완료 처리에 실패했습니다.");
+      console.error("Update Completed Error: " + error);
     }
   };
 
   return (
-    <div className="item w-1/3 h-[25vh] p-[0.25rem]">
+    <div className="item lg:w-1/3 md:w-1/2 w-full h-[25vh] p-[0.25rem]">
       <div className="w-full h-full border border-gray-500 rounded-md bg-gray-950 py-3 px-4 flex flex-col justify-between">
         <div className="upper">
-          <h2 className="item-title text-xl font-normal mb-3 relative pb-2 flex justify-between">
+          <h2 className="item-title lg:text-xl text-[0.875rem] font-normal mb-3 relative pb-2 flex justify-between">
             <span className="item-line w-full absolute bottom-0 left-0 h-[1px] bg-gray-500"></span>
             {title}
             <span
-              className="text-sm py-1 px-3 border border-gray-500 rounded-md hover:bg-gray-700 cursor-pointer"
+              className="lg:text-sm text-[0.75rem] py-1 px-3 border border-gray-500 rounded-md hover:bg-gray-700 cursor-pointer"
               onClick={handleOpenDetailModal}
             >
               자세히
             </span>
           </h2>
-          <p>{textLengthOverCut(description, 60, "...")}</p>
+          <p className="text-sm 1g:text-[1rem]">
+            {textLengthOverCut(description, 60, "...")}
+          </p>
         </div>
         <div className="lower">
-          <p className="date text-sm mb-1">{date}</p>
-          <div className="item-footer flex justify-between">
+          <p className="date lg:text-sm text-[0.75rem] mb-1">{date}</p>
+          <div className="item-footer flex justify-between flex-col md:flex-row gap-2">
             <div className="item-footer-left flex gap-2">
-              {isCompleted ? ( // iscompleted를 isCompleted로 변경
+              {iscompleted ? (
                 <button
                   className="item-btn bg-green-400"
                   onClick={changeCompleted}

@@ -1,4 +1,5 @@
 const rootPath = "http://localhost:8000";
+// const rootPath = "http://34.224.166.207";
 
 const GET_TASKS_API_URL = `${rootPath}/getTasks`;
 const DELETE_TASK_API_URL = `${rootPath}/deleteTask`;
