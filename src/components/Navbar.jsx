@@ -27,6 +27,8 @@ const Navbar = ({ menuIdx }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { given_name } = user || {};
 
+  console.log(googleClientId);
+
   const handleLoginSucess = useCallback(
     (response) => {
       try {
