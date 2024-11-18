@@ -1,5 +1,5 @@
 // const rootPath = "http://localhost:8000";
-const rootPath = "http://kyeongwook.site";
+const rootPath = "https://back.kyeongwook.site";
 
 const GET_TASKS_API_URL = `${rootPath}/getTasks`;
 const DELETE_TASK_API_URL = `${rootPath}/deleteTask`;
